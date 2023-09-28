@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 3px;
+
+}
+ .p1{
+    border-radius: 5px;
+    border: 1px solid #c4c4c4ce;
+    width: 230px;
+    height: 400px;
+    padding: 10px;
+ }
+
+ .p3 > button{
+    width: 60px;
+    border: none;
+    border-radius: 5px;
+    background-color: #D0D0D0 ;
+    height: 60px;
+ }
+
+:hover > button{
+    background-color: 	rgb(64,64,64) ;
+ }
+
+ .p33 > button {
+    width: 263px;
+    border: none;
+    background-color:#D0D0D0 ;
+    height: 60px;
+    border-radius: 5px;
+}
+:hover > .p33 > button{
+    background-color: 	rgb(64,64,64) ;
+}
+.container{
+    margin: 60px;
+    padding-left: 35%;
+    background-image: url();
+    background-repeat: none;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+    <div class="container"> 
+    <table class="p1">
+        <tr class="p2">
+            <td class="p3" colspan="4" style="border: 1px solid #C3C3C3; border-radius: 5px; height: 130PX; padding: 4px;"></td>
+            <p id="lblOperacion" style="margin-left: 5px"></p>
+			<p id="lblActual" style="text-align: end; font-size: 35px; padding: 0px;margin: 0px; margin-right: 5px;"></p>
+        </tr>
+        
+        <tr>
+            <td class="p33" colspan="4"><button type="reset" onclick="fnCalcular('AC',3)" class="p33">AC</button></td>
+        </tr>
+
+        <tr>
+            <td class="p3"><button onclick="fnCalcular('7',0)">7</button></td>
+            <td class="p3"><button onclick="fnCalcular('8',0)">8</button></td>
+            <td class="p3"><button onclick="fnCalcular('9',0)">9</button></td>
+            <td class="p3"><button onclick="fnCalcular('/',1)">/</button></td>
+        </tr>
+
+        <tr>
+            <td class="p3"><button  onclick="fnCalcular('4',0)">4</button></td>
+            <td class="p3"><button onclick="fnCalcular('5',0)">5</button></td>
+            <td class="p3"><button onclick="fnCalcular('6',0)">6</button></td>
+            <td class="p3"><button onclick="fnCalcular('*',1)">*</button></td>
+        </tr>
+
+        <tr>
+            <td class="p3"><button onclick="fnCalcular('1',0)">1</button></td>
+            <td class="p3"><button onclick="fnCalcular('2',0)">2</button></td>
+            <td class="p3"><button onclick="fnCalcular('3',0)">3</button></td>
+            <td class="p3"><button onclick="fnCalcular('-',1)">-</button></td>
+        </tr>
+
+        <tr>
+            <td class="p3"><button onclick="fnCalcular('0',0)">0</button></td>
+            <td class="p3"><button onclick="fnCalcular('.', 5)">.</button></td>
+            <td class="p3"><button onclick="fnCalcular('=',4)">=</button></td>
+            <td class="p3"><button onclick="fnCalcular('+',1)">+</button></td>
+        </tr>
+    </table>
+</div> 
+
+            <!--..............................-->
+
+            <script type="text/javascript">
+                var lstDatos="";
+                var dblTotal=0;
+                var bitOperadorActual="";
+                var strOperacionRealizada=""
+                function fnCalcular(strDato,bitOperador){
+                    
+                    strOperacionRealizada+=(strDato);
+            
+                    document.getElementById("lblOperacion").innerHTML =strOperacionRealizada;
+                
+                    if(bitOperador==0){
+                      lstDatos+=(strDato); 
+                    }
+            
+                    if(bitOperador==1){
+                        if(bitOperadorActual==""){
+                        
+                            bitOperadorActual=strDato;
+                            dblTotal=dblTotal+parseFloat(lstDatos);  
+                            lstDatos="";
+            
+                        }else{
+                            fnTotal(bitOperadorActual);
+                            bitOperadorActual=strDato;
+                            lstDatos="";
+                        }
+            
+                        
+                    }
+            
+                
+                }
+            
+                function fnTotal(){
+                    switch (bitOperadorActual){
+                            case "+":
+                                dblTotal=parseFloat(dblTotal)+parseFloat(lstDatos);
+                            break;
+                            case "-":
+                                dblTotal=parseFloat(dblTotal)-parseFloat(lstDatos);
+                            break;
+                            case "*":
+                                dblTotal=parseFloat(dblTotal==0?1:dblTotal)*parseFloat(lstDatos);
+                            break;
+                            case "/":
+                                dblTotal=dblTotal/parseFloat(lstDatos); 
+                            break;
+                            
+                        }
+            
+                        document.getElementById("lblActual").innerHTML =dblTotal;
+                        
+                }
+            </script>
+
+</body>
+</html>
